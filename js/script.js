@@ -1,6 +1,6 @@
 
-let colorText = 'red';
-let shapeText = 'square';
+let color = 'red';
+let shape = 'square';
 
 function setup() {
       createCanvas(400, 400);
@@ -8,39 +8,28 @@ function setup() {
 }
 
 function draw() {
-      colorButton = createButton(colorText);
+      colorButton = createButton(color);
       colorButton.size(55);
       colorButton.position(15, 15);
-      shapeButton = createButton(shapeText);
+      shapeButton = createButton(shape);
       shapeButton.size(55);
       shapeButton.position(15 + colorButton.width + 10, 15);
 
       shapeButton.mousePressed(changeShape);
       colorButton.mousePressed(changeColor);
-
-      if(mousePressed){
-            if(shapeText === 'square'){
-                  drawRect();
-            } else {
-                  drawCircle();
-            }
-      }
 }
 
 function changeColor(){
 
-      switch (colorText) {
+      switch (color) {
             case 'red':
-                  colorText = 'black';
-                  fill(black);
+                  color = 'black';
                   break;
             case 'black':
-                  colorText = 'yellow';
-                  fill(yellow);
+                  color = 'yellow';
                   break;
             case 'yellow':
-                  colorText = 'red';
-                  fill(red);
+                  color = 'red';
                   break;
       
             default:
@@ -49,12 +38,12 @@ function changeColor(){
 }
 
 function changeShape() {
-      switch (shapeText) {
+      switch (shape) {
             case 'square':
-                  shapeText = 'circle';
+                  shape = 'circle';
                   break;
             case 'circle':
-                  shapeText = 'square';
+                  shape = 'square';
                   break;
 
             default:
@@ -63,9 +52,19 @@ function changeShape() {
 }
 
 function drawCircle(){
-      ellipse(mouseX, mouseY, 30);
+      fill(color);
+      ellipse(mouseX, mouseY, 50);
 }
 
 function drawRect(){
-      rect(mouseX, mouseY, 30);
+      fill(color);
+      rect(mouseX, mouseY, 50);
+}
+
+function mousePressed(){
+      if(shape === 'square'){
+            drawRect();
+      } else {
+            drawCircle();
+      }
 }
