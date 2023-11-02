@@ -1,6 +1,5 @@
 
 let colorText = 'red';
-let color = color('red');
 let shapeText = 'square';
 
 function setup() {
@@ -21,10 +20,29 @@ function setup() {
   }
 
   function changeColor(){
-        if()
+        if(colorText === 'red') {
+            colorText = 'black';
+            fill(black);
+        } else if(colorText === 'black' ) {
+            colorText = 'yellow';
+            fill(yellow);
+        } else if (colorText === 'yellow') {
+            colorText = 'red';
+            fill(red);
+        }
   }
 
   function changeShape(){
+      switch (shapeText) {
+            case 'square':
+                  shapeText = 'circle';
+                  break;
+            case 'circle':
+                  shapeText = 'square';
+                  break;
+            default:
+                  break;
+      }
 
   }
   
