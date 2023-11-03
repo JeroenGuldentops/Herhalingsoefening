@@ -23,7 +23,7 @@ function draw() {
       clearButton.mousePressed(clearCanvas);
 }
 
-function changeColor(){
+function changeColor() {
 
       switch (color) {
             case 'red':
@@ -35,7 +35,7 @@ function changeColor(){
             case 'yellow':
                   color = 'red';
                   break;
-      
+
             default:
                   break;
       }
@@ -59,20 +59,30 @@ function clearCanvas() {
       background(220);
 }
 
-function drawCircle(){
+function drawCircle() {
       fill(color);
       ellipse(mouseX, mouseY, 50);
 }
 
-function drawRect(){
+function drawRect() {
       fill(color);
       rect(mouseX, mouseY, 50);
 }
 
-function mousePressed(){
-      if(shape === 'square'){
-            drawRect();
+function mousePressed() {
+      if (!overlap(colorButton) && !overlap(shapeButton) && !overlap(clearButton)) {
+            if (shape === 'square') {
+                  drawRect();
+            } else {
+                  drawCircle();
+            }
+      }
+}
+
+function overlap(object) {
+      if (mouseX >= object.x && mouseX <= (object.x + object.width) && mouseY >= object.y && mouseY <= (object.y + object.height)) {
+            return true;
       } else {
-            drawCircle();
+            return false;
       }
 }
